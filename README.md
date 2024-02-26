@@ -1,6 +1,4 @@
-# vue-project
-
-This template should help get you started developing with Vue 3 in Vite.
+# First-Vue-Project
 
 ## Recommended IDE Setup
 
@@ -27,4 +25,4 @@ npm run dev
 ```sh
 npm run build
 ```
-# First-Vue-Project
+
