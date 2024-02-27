@@ -1,10 +1,14 @@
 <template>
   <div class="home">
 
+    <h2>
+      {{ appTitle }}
+    </h2>
+
     <h3>
       {{ counterData.title }}:
     </h3>
-    
+
     <div>
       <button @click="decreaseCounter" class="btn">-</button>
       <span class="counter">{{ counterData.count }}</span>
@@ -24,23 +28,25 @@
 
 <!-- SCRIPT SETUP PATTERN -->
 <script setup>
-  import { ref, reactive } from 'vue';
+import { ref, reactive } from 'vue';
 
-  const counter = ref(0),
-        counterTitle = ref("My counter");
+const appTitle = "My Counter App";
 
-  const counterData = reactive({
-    count: 0,
-    title: "My counter"
-  });
+const counter = ref(0),
+  counterTitle = ref("My counter");
 
-  const increaseCounter = () => {
-    counterData.count++
-  };
+const counterData = reactive({
+  count: 0,
+  title: "My counter"
+});
 
-  const decreaseCounter = () => {
-    counterData.count--
-  };
+const increaseCounter = () => {
+  counterData.count++
+};
+
+const decreaseCounter = () => {
+  counterData.count--
+};
 </script>
 
 <!-- SETUP FUNCTION PATTERN -->
@@ -89,17 +95,18 @@
 </script> -->
 
 <style>
-  .home {
-    text-align: center;
-    padding: 20px;
-  }
+.home {
+  text-align: center;
+  padding: 20px;
+}
 
-  .btn, .counter {
-    font-size: 40px;
-    margin: 10px;
-  }
+.btn,
+.counter {
+  font-size: 40px;
+  margin: 10px;
+}
 
-  .edit {
-    margin-top: 6px;
-  }
+.edit {
+  margin-top: 6px;
+}
 </style>
