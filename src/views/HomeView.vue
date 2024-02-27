@@ -32,13 +32,20 @@
 
 <!-- SCRIPT SETUP PATTERN -->
 <script setup>
-import { reactive, computed } from 'vue';
+import { reactive, computed, watch } from 'vue';
 
 const appTitle = "My Counter App";
 
 const counterData = reactive({
   count: 0,
   title: "My counter"
+});
+
+watch(() => counterData.count, (newCount, oldCount) => {
+  console.log(newCount, oldCount);
+  if (newCount === 20) {
+    alert("Way to go! You made it to 20!")
+  }
 });
 
 const oddOrEven = computed(() => {
@@ -49,7 +56,6 @@ const oddOrEven = computed(() => {
 });
 
 const increaseCounter = (amount) => {
-  console.log(amount);
   counterData.count += amount
 };
 
