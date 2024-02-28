@@ -32,7 +32,7 @@
 
 <!-- SCRIPT SETUP PATTERN -->
 <script setup>
-import { reactive, computed, watch, onBeforeMount, onBeforeUnmount, onUnmounted, onMounted } from 'vue';
+import { reactive, computed, watch, onBeforeMount, onBeforeUnmount, onUnmounted, onMounted, onActivated, onDeactivated } from 'vue';
 
 const appTitle = "My Counter App";
 
@@ -80,6 +80,15 @@ onBeforeUnmount(() => {
 
 onUnmounted(() => {
   console.log("onUnmounted")
+});
+
+//activated hooks
+onActivated(() => {
+  console.log("onActivated")
+});
+
+onDeactivated(() => {
+  console.log("onDeactivated")
 });
 
 </script>
