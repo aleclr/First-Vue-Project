@@ -23,7 +23,7 @@
       <h4>
         Edit counter title:
       </h4>
-      <input v-model="counterData.title" type="text">
+      <input v-model="counterData.title" type="text" v-autofocus>
     </div>
 
   </div>
@@ -102,6 +102,18 @@ onBeforeUpdate(() => {
 onUpdated(() => {
   console.log("onUpdated")
 });
+
+//DIRECTIVES
+
+//local custom directives
+const vAutofocus =  { //becomes v-autofocus on the template
+  //hook inside
+  //different name
+  mounted: (el) => {
+    console.log("autofocus")
+    el.focus()
+  }
+};
 
 </script>
 
