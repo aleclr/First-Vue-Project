@@ -37,6 +37,9 @@ import { reactive, computed, watch,
   onActivated, onDeactivated, 
   onBeforeUpdate, onUpdated } from 'vue';
 
+//importing global directive
+import { vAutofocus } from "@/directives/vAutofocus";
+
 const appTitle = "My Counter App";
 
 const counterData = reactive({
@@ -106,14 +109,14 @@ onUpdated(() => {
 //DIRECTIVES
 
 //local custom directives
-const vAutofocus =  { //becomes v-autofocus on the template
-  //hook inside
-  //different name
-  mounted: (el) => {
-    console.log("autofocus")
-    el.focus()
-  }
-};
+// const vAutofocus =  { //becomes v-autofocus on the template
+//   //hook inside
+//   //different name
+//   mounted: (el) => {
+//     console.log("autofocus")
+//     el.focus()
+//   }
+// };
 
 </script>
 
