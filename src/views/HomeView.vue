@@ -32,7 +32,7 @@
 
 <!-- SCRIPT SETUP PATTERN -->
 <script setup>
-import { reactive, computed, watch } from 'vue';
+import { reactive, computed, watch, onBeforeMount, onBeforeUnmount, onUnmounted, onMounted } from 'vue';
 
 const appTitle = "My Counter App";
 
@@ -62,6 +62,26 @@ const increaseCounter = (amount) => {
 const decreaseCounter = (amount) => {
   counterData.count -= amount
 };
+
+//LIFECYCLE HOOKS
+
+//mounted hooks
+onBeforeMount(() => {
+  console.log("onBeforeMount")
+});
+
+onMounted(() => {
+  console.log("onMounted")
+});
+
+onBeforeUnmount(() => {
+  console.log("onBeforeUnmount")
+});
+
+onUnmounted(() => {
+  console.log("onUnmounted")
+});
+
 </script>
 
 <!-- SETUP FUNCTION PATTERN -->
