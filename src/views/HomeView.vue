@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-    <h2>
+    <h2 ref="appTitleRef">
       {{ appTitle }}
     </h2>
 
@@ -32,15 +32,21 @@
 
 <!-- SCRIPT SETUP PATTERN -->
 <script setup>
-import { reactive, computed, watch, 
+import { ref, reactive, computed, watch, 
   onBeforeMount, onBeforeUnmount, onUnmounted, onMounted, 
   onActivated, onDeactivated, 
-  onBeforeUpdate, onUpdated } from 'vue';
+  onBeforeUpdate, onUpdated, nextTick } from 'vue';
 
 //importing global directive
 import { vAutofocus } from "@/directives/vAutofocus";
 
 const appTitle = "My Counter App";
+
+const appTitleRef = ref(null);
+
+onMounted(() => {
+  console.log(`The app title is ${ appTitleRef.value.offsetWidth } px wide.`);
+});
 
 const counterData = reactive({
   count: 0,
@@ -61,8 +67,10 @@ const oddOrEven = computed(() => {
   return "odd"
 });
 
-const increaseCounter = (amount) => {
-  counterData.count += amount
+const increaseCounter = async (amount) => {
+  counterData.count += amount;
+  await nextTick();
+  console.log("do something when the DOM update is finished")
 };
 
 const decreaseCounter = (amount) => {
