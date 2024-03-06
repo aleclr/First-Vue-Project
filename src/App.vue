@@ -1,4 +1,7 @@
 <template>
+  <div class="user-data">
+    {{ userData.name }} @{{ userData.username }}
+  </div>
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
@@ -7,6 +10,23 @@
 
   <RouterView />
 </template>
+
+<script setup>
+
+import { reactive, provide } from 'vue';
+
+//DADOS DO USUARIO
+const userData = reactive({
+
+  name: 'Alec',
+  username: 'alecrim'
+
+});
+
+//data will be avaiable por all child components of app.vue
+provide('userData', userData);
+
+</script>
 
 <style scoped>
 
@@ -45,6 +65,15 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.user-data {
+  position: absolute;
+  background-color: beige;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  font-size: 12px;
 }
 
 </style>
