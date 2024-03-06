@@ -32,10 +32,10 @@
 
 <!-- SCRIPT SETUP PATTERN -->
 <script setup>
-import { ref, reactive, computed, watch, 
+import { ref, 
   onBeforeMount, onBeforeUnmount, onUnmounted, onMounted, 
   onActivated, onDeactivated, 
-  onBeforeUpdate, onUpdated, nextTick } from 'vue';
+  onBeforeUpdate, onUpdated } from 'vue';
 
 //importing global directive
 import { vAutofocus } from "@/directives/vAutofocus";
@@ -48,34 +48,7 @@ onMounted(() => {
   console.log(`The app title is ${ appTitleRef.value.offsetWidth } px wide.`);
 });
 
-const counterData = reactive({
-  count: 0,
-  title: "My counter"
-});
 
-watch(() => counterData.count, (newCount, oldCount) => {
-  console.log(newCount, oldCount);
-  if (newCount === 20) {
-    alert("Way to go! You made it to 20!")
-  }
-});
-
-const oddOrEven = computed(() => {
-  if ((counterData.count % 2) === 0) {
-    return "even"
-  }
-  return "odd"
-});
-
-const increaseCounter = async (amount) => {
-  counterData.count += amount;
-  await nextTick();
-  console.log("do something when the DOM update is finished")
-};
-
-const decreaseCounter = (amount) => {
-  counterData.count -= amount
-};
 
 //LIFECYCLE HOOKS
 
