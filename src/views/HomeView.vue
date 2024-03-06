@@ -37,6 +37,8 @@ import { ref,
   onActivated, onDeactivated, 
   onBeforeUpdate, onUpdated } from 'vue';
 
+import { useCounter } from '@/use/useCounter';
+
 //importing global directive
 import { vAutofocus } from "@/directives/vAutofocus";
 
@@ -48,7 +50,8 @@ onMounted(() => {
   console.log(`The app title is ${ appTitleRef.value.offsetWidth } px wide.`);
 });
 
-
+//destructuring the methods used by the template from the newly added composable
+const { counterData, oddOrEven, increaseCounter, decreaseCounter } = useCounter();
 
 //LIFECYCLE HOOKS
 
