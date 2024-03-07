@@ -6,24 +6,28 @@
     </h2>
 
     <h3>
-      {{ counterData.title }}:
+      {{ counter.title }}
     </h3>
 
     <div>
-      <button @click="decreaseCounter(1)" class="btn">-</button>
-      <span class="counter">{{ counterData.count }}</span>
-      <button @click="increaseCounter(1)" class="btn">+</button>
+      <button class="btn">-</button>
+      <span class="counter">{{ counter.count }}</span>
+      <button class="btn">+</button>
     </div>
 
     <p>
-      This counter is {{ oddOrEven }}.
+      This counter is odd/even.
     </p>
 
     <div class="edit">
       <h4>
         Edit counter title:
       </h4>
-      <input v-model="counterData.title" type="text" v-autofocus>
+      <input
+        v-model="counter.title"
+        v-autofocus
+        type="text"
+      >
     </div>
 
   </div>
@@ -37,10 +41,13 @@ import { ref,
   onActivated, onDeactivated, 
   onBeforeUpdate, onUpdated } from 'vue';
 
-import { useCounter } from '@/use/useCounter';
+//removing composable import to manage with state
+//import { useCounter } from '@/use/useCounter';
 
 //importing global directive
 import { vAutofocus } from "@/directives/vAutofocus";
+
+import { useCounterStore } from '@/stores/counter';
 
 const appTitle = "My Counter App";
 
@@ -50,8 +57,10 @@ onMounted(() => {
   console.log(`The app title is ${ appTitleRef.value.offsetWidth } px wide.`);
 });
 
+const counter = useCounterStore();
+
 //destructuring the methods used by the template from the newly added composable
-const { counterData, oddOrEven, increaseCounter, decreaseCounter } = useCounter();
+// const { counterData, oddOrEven, increaseCounter, decreaseCounter } = useCounter();
 
 //LIFECYCLE HOOKS
 
